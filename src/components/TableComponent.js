@@ -1,6 +1,6 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Button, Container, Row, Col, Spinner } from "reactstrap";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
@@ -66,7 +66,8 @@ const defaultSorted = [
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users.users,
+    getUsersList: state.users.getUsersList,
+    errorUsersList: state.users.errorUsersList,
   };
 };
 
@@ -75,28 +76,34 @@ const TableComponent = (props) => {
     <div>
       <Container>
         <h2 className="mt-3 mb-4">Transaction History</h2>
-        <ToolkitProvider bootstrap4 keyField="id" data={props.users} columns={columns} defaultSorted={defaultSorted} search>
-          {(props) => (
-            <div>
-              <Row>
-                <Col>
-                  <Link to={"/create"}>
-                    <Button color="success" className="">
-                      + Create Transaction
-                    </Button>
-                  </Link>
-                </Col>
-                <Col>
-                  <div className="float-end mb-3">
-                    <SearchBar {...props.searchProps} placeholder="Search..." />
-                  </div>
-                </Col>
-              </Row>
+        {props.getUsersList ? (
+          <ToolkitProvider bootstrap4 keyField="id" data={props.getUsersList} columns={columns} defaultSorted={defaultSorted} search>
+            {(props) => (
+              <div>
+                <Row>
+                  <Col>
+                    <Link to={"/create"}>
+                      <Button color="success" className="">
+                        + Create Transaction
+                      </Button>
+                    </Link>
+                  </Col>
+                  <Col>
+                    <div className="float-end mb-3">
+                      <SearchBar {...props.searchProps} placeholder="Search..." />
+                    </div>
+                  </Col>
+                </Row>
 
-              <BootstrapTable {...props.baseProps} pagination={paginationFactory()} />
-            </div>
-          )}
-        </ToolkitProvider>
+                <BootstrapTable {...props.baseProps} pagination={paginationFactory()} />
+              </div>
+            )}
+          </ToolkitProvider>
+        ) : (
+          <div className="text-center">
+            <Spinner color="dark"></Spinner>
+          </div>
+        )}
       </Container>
     </div>
   );

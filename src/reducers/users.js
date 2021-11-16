@@ -1,40 +1,42 @@
+import { GET_USERS_LIST } from "../actions/userAction";
+
 let initialState = {
-  users: [
-    {
-      id: 1,
-      nama: "Rivan",
-      category: "Income",
-      amount: 1000000,
-    },
-    {
-      id: 2,
-      nama: "Budi",
-      category: "Expense",
-      amount: 500000,
-    },
-    {
-      id: 3,
-      nama: "Bambang",
-      category: "Income",
-      amount: 700000,
-    },
-    {
-      id: 4,
-      nama: "Jordi",
-      category: "Income",
-      amount: 900000,
-    },
-    {
-      id: 5,
-      nama: "Sugeng",
-      category: "expense",
-      amount: 1000000,
-    },
-  ],
-  error: false,
+  getUsersList: false,
+  errorUsersList: false,
 };
 const users = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case GET_USERS_LIST:
+      return {
+        ...state,
+        getUsersList: action.payload.data,
+        errorUsersList: action.payload.errorMessage,
+      };
+
+    // case GET_USER_DETAIL:
+    //   return {
+    //     ...state,
+    //     getUserDetail: action.payload.data,
+    //     errorUserDetail: action.payload.errorMessage,
+    //   };
+
+    // case POST_USER_CREATE:
+    //   return {
+    //     ...state,
+    //     getResponDataUser: action.payload.data,
+    //     errorResponDataUser: action.payload.errorMessage,
+    //   };
+
+    // case PUT_USER_EDIT:
+    //   return {
+    //     ...state,
+    //     getResponDataUser: action.payload.data,
+    //     errorResponDataUser: action.payload.errorMessage,
+    // };
+
+    default:
+      return state;
+  }
 };
 
 export default users;
