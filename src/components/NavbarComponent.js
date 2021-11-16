@@ -12,7 +12,7 @@ const NavbarComponent = (props) => {
         <NavbarBrand href="/">Infracom-Tech</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/components/">Home</NavLink>
             </NavItem>
