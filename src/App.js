@@ -13,18 +13,10 @@ export default class App extends Component {
       <div>
         <NavbarComponent />
         <Router>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
-          <Route exact path="/create">
-            <CreatePage />
-          </Route>
-          <Route exact path="/edit/:id">
-            <EditPage />
-          </Route>
-          <Route exact path="/detail/:id">
-            <DetailPage />
-          </Route>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/create" component={CreatePage} />
+          <Route exact path="/edit/:id" component={EditPage} />
+          <Route exact path="/detail/:id" component={DetailPage} />
         </Router>
       </div>
     );
