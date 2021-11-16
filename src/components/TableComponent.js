@@ -1,10 +1,9 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
-import { Button, Container } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Container, Row, Col } from "reactstrap";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
-
+import { Link } from "react-router-dom";
 const { SearchBar } = Search;
 
 const columns = [
@@ -37,13 +36,18 @@ const columns = [
     formatter: (rowContent, row) => {
       return (
         <div>
-          <Button color="dark" className="me-2">
-            Detail
-          </Button>
-          <Button color="dark" className="me-2">
-            Edit
-          </Button>
-          <Button color="dark" className="me-2">
+          <Link to={"detail/" + row.id}>
+            <Button color="primary" className="me-2">
+              Detail
+            </Button>
+          </Link>
+          <Link to={"edit/" + row.id}>
+            <Button color="primary" className="me-2">
+              Edit
+            </Button>
+          </Link>
+
+          <Button color="danger" className="me-2">
             Delete
           </Button>
         </div>
@@ -63,13 +67,25 @@ const TableComponent = (props) => {
   return (
     <div>
       <Container>
-        <h2 className="mt-3 mb-3">Transaction History</h2>
+        <h2 className="mt-3 mb-4">Transaction History</h2>
         <ToolkitProvider bootstrap4 keyField="id" data={props.users} columns={columns} defaultSorted={defaultSorted} search>
           {(props) => (
             <div>
-              <div className="float-end mb-3">
-                <SearchBar {...props.searchProps} placeholder="Search..." />
-              </div>
+              <Row>
+                <Col>
+                  <Link to={"/create"}>
+                    <Button color="success" className="">
+                      + Create Transaction
+                    </Button>
+                  </Link>
+                </Col>
+                <Col>
+                  <div className="float-end mb-3">
+                    <SearchBar {...props.searchProps} placeholder="Search..." />
+                  </div>
+                </Col>
+              </Row>
+
               <BootstrapTable {...props.baseProps} pagination={paginationFactory()} />
             </div>
           )}

@@ -8,7 +8,7 @@ const NavbarComponent = (props) => {
 
   return (
     <div>
-      <Navbar color="success" dark expand="md">
+      <Navbar className="mb-2" color="success" dark expand="md">
         <NavbarBrand href="/">Infracom-Tech</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

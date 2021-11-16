@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import NavbarComponent from "./components/NavbarComponent";
-import TableComponent from "./components/TableComponent";
 
-class App extends Component {
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Homepage from "./pages/HomePage";
+import CreatePage from "./pages/CreatePage";
+import EditPage from "./pages/EditPage";
+import DetailPage from "./pages/DetailPage";
+
+export default class App extends Component {
   state = {
-    title: "Infracom-Tech",
     users: [
       {
         id: 1,
@@ -18,10 +22,21 @@ class App extends Component {
     return (
       <div>
         <NavbarComponent />
-        <TableComponent users={this.state.users} />
+        <Router>
+          <Route exact path="/">
+            <Homepage users={this.state.users} />
+          </Route>
+          <Route exact path="/create">
+            <CreatePage />
+          </Route>
+          <Route exact path="/edit/:id">
+            <EditPage />
+          </Route>
+          <Route exact path="/detail/:id">
+            <DetailPage />
+          </Route>
+        </Router>
       </div>
     );
   }
 }
-
-export default App;
