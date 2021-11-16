@@ -8,23 +8,13 @@ import EditPage from "./pages/EditPage";
 import DetailPage from "./pages/DetailPage";
 
 export default class App extends Component {
-  state = {
-    users: [
-      {
-        id: 1,
-        nama: "rivan",
-        category: "Income",
-        amount: 1000000,
-      },
-    ],
-  };
   render() {
     return (
       <div>
         <NavbarComponent />
         <Router>
           <Route exact path="/">
-            <Homepage users={this.state.users} />
+            <Homepage />
           </Route>
           <Route exact path="/create">
             <CreatePage />
