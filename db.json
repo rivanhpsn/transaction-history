@@ -27,8 +27,44 @@
     {
       "id": 5,
       "nama": "Sugeng",
-      "category": "expense",
+      "category": "Expense",
       "amount": 1000000
+    },
+    {
+      "id": 6,
+      "nama": "Dina",
+      "category": "Expense",
+      "amount": 1500000
+    },
+    {
+      "id": 7,
+      "nama": "Jule",
+      "category": "Income",
+      "amount": 4000000
+    },
+    {
+      "id": 8,
+      "nama": "Hana",
+      "category": "Expense",
+      "amount": 1500000
+    },
+    {
+      "id": 9,
+      "nama": "Fana",
+      "category": "Income",
+      "amount": 1500000
+    },
+    {
+      "id": 10,
+      "nama": "Sugeng",
+      "category": "Expense",
+      "amount": 700000
+    },
+    {
+      "id": 11,
+      "nama": "Sugeng",
+      "category": "Income",
+      "amount": 300000
     }
   ]
 }
